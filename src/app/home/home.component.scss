@@ -1,0 +1,42 @@
+.side-nav-container {
+    height: 90%;
+      width: 100%;
+      margin: 0;
+    }
+  .header {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+  }
+  .logo {
+    max-height: 62px;
+    max-width: 61px;
+    margin-left: -45px;
+  }
+  .icon {
+    margin-left: 60px;
+  }
+  .content {
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .content {
+       width: 100%;
+       overflow: hidden;
+       margin: 0 -150px 0 -150px;
+    }
+  }
+  .push-right {
+    margin-left: 1005px;
+  }
+  .pull-left {
+    margin-left: 91px;
+  }
+  .container {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .side-pannel {
+  background-color: chocolate;
+  }

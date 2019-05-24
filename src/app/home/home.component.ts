@@ -1,43 +1,56 @@
-﻿import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { User } from 'src/app/_models/user';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { AuthenticationService } from '../_services/authentication.service';
-import { UserService } from '../_services/user.service';
-import { User } from '../_models/user';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
+import { UserService } from 'src/app/_services/user.service';
+import { Router } from '@angular/router';
 
-@Component({ templateUrl: 'home.component.html' })
-export class HomeComponent implements OnInit, OnDestroy {
-    currentUser: User;
-    currentUserSubscription: Subscription;
-    users: User[] = [];
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
+})
+export class HomeComponent implements OnInit {
+  private currentUser: User;
+  private currentUserSubscription: Subscription;
+  private users: User[] = [];
 
-    constructor(
-        private authenticationService: AuthenticationService,
-        private userService: UserService
-    ) {
-        this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
-            this.currentUser = user;
-        });
+  constructor(
+      private authenticationService: AuthenticationService,
+      private userService: UserService,
+      private router: Router
+  ) {
+    if (this.authenticationService.currentUserValue) { 
+        this.router.navigate(['home']);
     }
+      this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+          this.currentUser = user;
+      });
+  }
 
-    ngOnInit() {
-        this.loadAllUsers();
-    }
+  ngOnInit() {
+      this.loadAllUsers();
+  }
 
-    ngOnDestroy() {
-        // unsubscribe to ensure no memory leaks
-        this.currentUserSubscription.unsubscribe();
-    }
+  ngOnDestroy() {
+      // unsubscribe to ensure no memory leaks
+      this.currentUserSubscription.unsubscribe();
+  }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).pipe(first()).subscribe(() => {
-            this.loadAllUsers()
-        });
-    }
+  private deleteUser(id: number) {
+      this.userService.delete(id).pipe(first()).subscribe(() => {
+          this.loadAllUsers()
+      });
+  }
+  public logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/']);
+  }
+  private loadAllUsers() {
+      this.userService.getAll().pipe(first()).subscribe(users => {
+          this.users = users;
+      });
+  }
 
-    private loadAllUsers() {
-        this.userService.getAll().pipe(first()).subscribe(users => {
-            this.users = users;
-        });
-    }
 }
