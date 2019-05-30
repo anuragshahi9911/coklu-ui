@@ -15,7 +15,8 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
 import { AlertsComponent } from './shared/components/alerts/alerts.component';
 import { RootAuthGuard } from './shared/guards/root-auth.guard';
 import { AlwaysAuthChildrenGuard } from './shared/guards/always-auth-children.guard';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';;
+import { ChatfeatureComponent } from './mainpannel/table/maindata/chatfeature/chatfeature.component'
 
 @NgModule({
     imports: [
@@ -35,7 +36,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
         LoginComponent,
         RegisterComponent,
         HomeComponent,
-        BreadcrumbComponent
+        BreadcrumbComponent,
+        ChatfeatureComponent
     ],
     providers: [
         RootAuthGuard,
