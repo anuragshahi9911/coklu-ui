@@ -11,9 +11,14 @@ import { FormsModule } from '@angular/forms';
 import { BreadcrumbComponent } from '../home/breadcrumb/breadcrumb.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
+import { ChatfeatureComponent } from '../mainpannel/table/maindata/chatfeature/chatfeature.component';
+import {
+  MatButtonModule, MatCheckboxModule,
+  MatFormFieldModule, MatInputModule, MatButtonToggleModule, MatIconModule
+} from '@angular/material';
 
 @NgModule({
-  declarations: [TableComponent, CarouselComponent, DashboardHomeComponent],
+  declarations: [TableComponent, CarouselComponent, DashboardHomeComponent, ChatfeatureComponent ],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,7 +31,13 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
     MultiSelectModule,
     SliderModule,
     CalendarModule,
-    DataTableModule   
+    DataTableModule,
+    MatFormFieldModule,
+    MatButtonModule,
+        MatButtonToggleModule,
+        MatIconModule,
+        MatInputModule,
+        MatCheckboxModule 
   ]
 })
 export class DashboardModule { }

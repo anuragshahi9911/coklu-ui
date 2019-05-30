@@ -11,13 +11,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BreadcrumbComponent } from './home/breadcrumb/breadcrumb.component';
 import { HomeComponent } from './home/home.component';
-import {BreadcrumbModule} from 'primeng/breadcrumb';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { AlertsComponent } from './shared/components/alerts/alerts.component';
 import { RootAuthGuard } from './shared/guards/root-auth.guard';
 import { AlwaysAuthChildrenGuard } from './shared/guards/always-auth-children.guard';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';;
-import { ChatfeatureComponent } from './mainpannel/table/maindata/chatfeature/chatfeature.component'
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {
+    MatButtonModule, MatCheckboxModule,
+    MatFormFieldModule, MatInputModule, MatButtonToggleModule, MatIconModule
+} from '@angular/material';
 @NgModule({
     imports: [
         BrowserModule,
@@ -29,6 +31,8 @@ import { ChatfeatureComponent } from './mainpannel/table/maindata/chatfeature/ch
         CommonModule,
         BreadcrumbModule,
         AngularFontAwesomeModule
+        
+        
     ],
     declarations: [
         AppComponent,
@@ -36,15 +40,21 @@ import { ChatfeatureComponent } from './mainpannel/table/maindata/chatfeature/ch
         LoginComponent,
         RegisterComponent,
         HomeComponent,
-        BreadcrumbComponent,
-        ChatfeatureComponent
+        BreadcrumbComponent
     ],
     providers: [
         RootAuthGuard,
         AlwaysAuthChildrenGuard
     ],
     bootstrap: [AppComponent],
-    exports: [CommonModule, HomeComponent]
+    exports: [CommonModule,
+        HomeComponent,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatIconModule,
+        MatInputModule,
+        MatCheckboxModule]
 })
 
 export class AppModule { }
