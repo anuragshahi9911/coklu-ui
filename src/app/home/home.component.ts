@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from 'src/app/_models/user';
-import { Subscription } from 'rxjs';
-import { first } from 'rxjs/operators';
-import { AuthenticationService } from 'src/app/_services/authentication.service';
-import { UserService } from 'src/app/_services/user.service';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../shared/models/user.model';
+import { Subscription } from 'rxjs';
+import { AuthenticationService } from '../shared/services/authentication.service';
+import { UserService } from '../shared/security/user.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
   private currentUser: User;
   private currentUserSubscription: Subscription;
   private users: User[] = [];
-
+  public sidebarFlag = false;
+  @ViewChild('sidebar') sidebar: ElementRef;
   constructor(
       private authenticationService: AuthenticationService,
       private userService: UserService,
@@ -52,5 +53,14 @@ export class HomeComponent implements OnInit {
           this.users = users;
       });
   }
+  /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+    public  toogleNav() {
+        this.sidebarFlag = this.sidebarFlag ? false : true;
+    }
+    
+    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    public  closeNav() {
+        this.sidebarFlag = false;
+    }
 
 }
