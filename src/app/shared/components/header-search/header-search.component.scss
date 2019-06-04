@@ -199,13 +199,6 @@ label.dropdown-item {
 .dropdown-item:hover{
     background-color: #FF2852 !important;
 }
-
-.main-style{
-    padding-right: 20px !important;
-    margin-left: 221px !important;
-}
-
-
 .form-control, .custom-select {
     font-size: 1rem !important;
     border: 1px solid #d6d9dc !important;
@@ -451,7 +444,7 @@ label.dropdown-item {
 
     @media (min-width: 992px){
     .navbar-expand-lg {
-        width: calc(100vw - 220px) !important;
+        width: calc(100vw - 249px) !important;
     }
 }
 

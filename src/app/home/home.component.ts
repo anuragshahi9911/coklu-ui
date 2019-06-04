@@ -7,6 +7,7 @@ import { UserService } from '../shared/security/user.service';
 import { first } from 'rxjs/operators';
 import { MenuModel } from '../shared/models/menu.model';
 import { UserProfileItem } from '../shared/components/header-search/header-user-profile';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -19,15 +20,14 @@ export class HomeComponent implements OnInit {
   private users: User[] = [];
   public sidebarFlag = false;
   public width: Number;
-  public isMenu: any;
-  public isMenuIcon: any;
   public menuItems: Array<MenuModel>;
   public userProfileItems: Array<UserProfileItem>;
   @ViewChild('sidebar') sidebar: ElementRef;
   constructor(
     private authenticationService: AuthenticationService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    public homeService: HomeService
   ) {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['home/dashboard']);
@@ -58,11 +58,11 @@ export class HomeComponent implements OnInit {
   }
   hideMenu() {
     if (this.width <= 992) {
-      this.isMenu = false;
-      this.isMenuIcon = true;
+      this.homeService.isMenu = false;
+      this.homeService.isMenuIcon = true;
     } else {
-      this.isMenu = true;
-      this.isMenuIcon = false;
+      this.homeService.isMenu = true;
+      this.homeService.isMenuIcon = false;
     }
   }
   private deleteUser(id: number) {

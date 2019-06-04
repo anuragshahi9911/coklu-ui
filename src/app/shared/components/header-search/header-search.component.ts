@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchEmitterModel } from './searchEmitter-model';
+import { HomeService } from 'src/app/home/home.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -22,7 +23,8 @@ export class HeaderSearchComponent implements OnInit {
   isMenu: boolean;
 
   constructor(
-    public router: Router) {
+    public router: Router,
+    public homeService: HomeService) {
     this.searchText = '';
   }
   public appItems: Array<any>;
@@ -39,10 +41,10 @@ export class HeaderSearchComponent implements OnInit {
   public clearSearch() {
   }
   public menuIcon() {
-    if (this.isMenu) {
-      this.isMenu = false;
+    if (this.homeService.isMenu) {
+      this.homeService.isMenu = false;
     } else {
-      this.isMenu = true;
+      this.homeService.isMenu = true;
     }
   }
 }

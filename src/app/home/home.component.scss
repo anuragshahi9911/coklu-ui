@@ -21,17 +21,30 @@
   padding-top: 13px !important;
   }
 .router-style{
-  margin-right:10px !important;
   margin-left:230px !important;
+  margin-top:40px !important;
+  margin-bottom:50px !important;
+}
+.app-header {
+  margin-right:18px !important;
+  margin-left:15px !important;
   margin-top:0px !important;
   margin-bottom:50px !important;
 }
-
 .router-style-md{
   margin-right:15px !important;
   margin-left:15px !important;
   margin-top:0px !important;
   margin-bottom:50px !important;
+}
+.mainContainer { 
+  margin-right: 18px;
+  display: grid;
+  overflow: hidden;
+}
+.header-style {
+  margin-left:230px !important;
+  margin-bottom:-13px !important;
 }
 @media screen and (max-width: 992px){
   //to make breadcrumbs visible when search text is visible
@@ -52,6 +65,7 @@
       margin-left: -90px !important;
   }  
 }
+
 @media screen and (min-width: 900px) and (max-width: 992px){
   .breadcrumb-style-md {
       margin-left: -150px !important;
