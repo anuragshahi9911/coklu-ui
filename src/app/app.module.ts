@@ -20,6 +20,11 @@ import {
     MatButtonModule, MatCheckboxModule,
     MatFormFieldModule, MatInputModule, MatButtonToggleModule, MatIconModule
 } from '@angular/material';
+import { fakeBackendProvider } from './shared/services/fake-backend';
+import { ParticlesModule } from 'angular-particle';
+import { AlertService } from './shared/components/alerts/alert.service';
+import { MenuComponent } from './shared/components/menu/menu.component';
+import { HeaderSearchComponent } from './shared/components/header-search/header-search.component';
 @NgModule({
     imports: [
         BrowserModule,
@@ -30,21 +35,25 @@ import {
         AppRoutingModule,
         CommonModule,
         BreadcrumbModule,
-        AngularFontAwesomeModule
-        
+        AngularFontAwesomeModule,
+        ParticlesModule
         
     ],
     declarations: [
         AppComponent,
         AlertsComponent,
         LoginComponent,
+        MenuComponent,
         RegisterComponent,
         HomeComponent,
-        BreadcrumbComponent
+        BreadcrumbComponent,
+        HeaderSearchComponent
     ],
     providers: [
         RootAuthGuard,
-        AlwaysAuthChildrenGuard
+        AlwaysAuthChildrenGuard,
+        fakeBackendProvider,
+        AlertService
     ],
     bootstrap: [AppComponent],
     exports: [CommonModule,

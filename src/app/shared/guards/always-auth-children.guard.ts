@@ -1,16 +1,27 @@
 import { Injectable } from '@angular/core';
-import { CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { UserService } from '../security/user.service';
 import { NavigationService } from '../services/navigation.service';
 import { Observable } from 'rxjs/internal/Observable';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 @Injectable()
 export class AlwaysAuthChildrenGuard implements CanActivateChild {
-  constructor(private userService: UserService,
-    private navService: NavigationService) { }
-    public canActivateChild(
-      route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      return true;
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+) {}
+
+canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const currentUser = this.authenticationService.currentUserValue;
+    if (currentUser) {
+        // authorised so return true
+        return true;
     }
+
+    // not logged in so redirect to login page with the return url
+    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+    return false;
+}
 }

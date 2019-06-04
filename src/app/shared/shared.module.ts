@@ -7,6 +7,7 @@ import { DatePickerComponent } from "./components/date-picker/date-picker.compon
 import { BreadcrumbComponent } from "../home/breadcrumb/breadcrumb.component";
 import { AlertService } from "./components/alerts/alert.service";
 import { ConfirmDialogService } from "./components/confirm-dialog/confirm-dialog.service";
+import { MenuComponent } from './components/menu/menu.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ConfirmDialogService } from "./components/confirm-dialog/confirm-dialog
     AlertsComponent,
     ConfirmDialogComponent,
     DatePickerComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    MenuComponent
 
   ],
   exports: [

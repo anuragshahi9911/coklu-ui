@@ -1,128 +1,59 @@
-.side-nav-container {
-    height: 90%;
-      width: 100%;
-      margin: 0;
-    }
-  .header {
-    height: 100vh;
-    width: 100%;
-    margin: 0;
-  }
-  .logo {
-    max-height: 62px;
-    max-width: 61px;
-    margin-left: -45px;
-  }
-  .icon {
-    margin-left: 60px;
-  }
-  .content {
-    width: 100%;
-  }
-  
-  @media screen and (max-width: 1000px) {
-    .content {
-       width: 100%;
-       overflow: hidden;
-       margin: 0 -150px 0 -150px;
-    }
-  }
-  .push-right {
-    margin-left: 1005px;
-  }
-  .pull-left {
-    margin-left: 91px;
-  }
-  .container {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-  .side-pannel {
-  background-color: black;
-  }
-  .sidenav-item {
-    color: white;
-  }
-  /* The sidebar menu */
-.sidebar {
-  height: 100vh; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  z-index: 1; /* Stay on top */
-  top: 0;
-  left: 0;
-  background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+
+.breadcrumb-style{
+  margin-top: 40px;
+  /* padding-bottom: 40px ; */
+  margin-left: 220px ;
 }
-.sidebarTrue {
-  width: 250px;
+.breadcrumb-style-md{
+  margin-top: 60px ;
+  /* padding-bottom: 40px ; */
+  padding-left : 40px !important;
+  // margin-left: 150px !important;
 }
-.mainContent {
-  display: flex;
+::ng-deep .breadcrumb .breadcrumb-item.list > a {
+  color:#FF2852 !important;
 }
-.sidebarFalse {
-  width: 60px;
-}
-.mainTrue {
-  margin-left: 0px;
-}
-/* The sidebar links */
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+::ng-deep .breadcrumb{
+  // margin-left: 16px;
+
+  padding: 0px !important;
+  height: 47px;
+  padding-top: 13px !important;
+  }
+.router-style{
+  margin-right:10px !important;
+  margin-left:230px !important;
+  margin-top:0px !important;
+  margin-bottom:50px !important;
 }
 
-/* When you mouse over the navigation links, change their color */
-.sidebar a:hover {
-  color: #f1f1f1;
+.router-style-md{
+  margin-right:15px !important;
+  margin-left:15px !important;
+  margin-top:0px !important;
+  margin-bottom:50px !important;
+}
+@media screen and (max-width: 992px){
+  //to make breadcrumbs visible when search text is visible
+  .breadcrumb-style-md-down{
+      margin-top: 120px;
+      padding-bottom: 20px;
+  }
 }
 
-/* Position and style the close button (top right corner) */
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+// breadcrumb alignment for different resolutions
+@media screen and (min-width: 600px) and (max-width: 800px){
+  .breadcrumb-style-md {
+      margin-left: -50px !important;
+  }  
 }
-.sidebar .logos {
-  margin-left: 8px;
-  display: flex;
+@media screen and (min-width: 800px) and (max-width: 900px){
+  .breadcrumb-style-md {
+      margin-left: -90px !important;
+  }  
 }
-/* The button used to open the sidebar */
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
+@media screen and (min-width: 900px) and (max-width: 992px){
+  .breadcrumb-style-md {
+      margin-left: -150px !important;
+  }  
 }
-
-.openbtn:hover {
-  background-color: #444;
-}
-
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-  transition: margin-left .5s; /* If you want a transition effect */
-  padding: 20px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;
-             }
-}
-@media screen and (min-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;
-             }
-}
-

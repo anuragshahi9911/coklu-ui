@@ -8,25 +8,23 @@ import { RootAuthGuard } from './shared/guards/root-auth.guard';
 import { AlwaysAuthChildrenGuard } from './shared/guards/always-auth-children.guard';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/home/dashboard', pathMatch: 'full' },
-  { path: 'home', redirectTo: '/home/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', redirectTo: '/home/dashboard', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: '', component: HomeComponent, canActivate: [RootAuthGuard] },
   { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+ 
   {
     path: 'home', component: HomeComponent,
-    canActivate: [RootAuthGuard ],
+    canActivate: [RootAuthGuard],
     canActivateChild: [AlwaysAuthChildrenGuard],
-
     children: [
       {
         path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule', data: {
           title: 'Home'
         }
-      }  
+      }
     ]
   },
-  { path: '**', component: HomeComponent }
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
