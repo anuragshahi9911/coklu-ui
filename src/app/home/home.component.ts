@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     this.width = window.innerWidth;
     this.hideMenu();
     let item1 = new MenuModel('Dashboard', 'nl', '', '', '/')
-    let item2 = new MenuModel('Chat', 'nl', '', '', '/chat')
+    let item2 = new MenuModel('Chat', '/home/dashboard/chat', '', '', 'null')
     let item3 = new MenuModel('Other', 'nl', '', '', '/')
     this.menuItems = [item1,item2,item3];
     let user = new UserProfileItem('Anurag Shahi', '', '')

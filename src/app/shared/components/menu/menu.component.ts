@@ -33,7 +33,7 @@ export class MenuComponent implements OnInit {
   }
   // Method invoked on the click of side panel menu
   public menuClicked(option: any) {
-    if (option.name === 'Chat') {
+    if (option.name === 'DashBoard') {
 
     } else if (option.name === 'Chat') {
 

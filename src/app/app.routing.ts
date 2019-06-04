@@ -11,6 +11,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [RootAuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LoginComponent },
  
   {
     path: 'home', component: HomeComponent,
