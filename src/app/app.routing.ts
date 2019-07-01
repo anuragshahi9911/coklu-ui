@@ -6,13 +6,11 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { RootAuthGuard } from './shared/guards/root-auth.guard';
 import { AlwaysAuthChildrenGuard } from './shared/guards/always-auth-children.guard';
-
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [RootAuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LoginComponent },
- 
   {
     path: 'home', component: HomeComponent,
     canActivate: [RootAuthGuard],
@@ -21,7 +19,7 @@ const appRoutes: Routes = [
       {
         path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule', data: {
           title: 'Home'
-        }
+        },
       }
     ]
   },

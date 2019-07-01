@@ -45,9 +45,9 @@ export class UserService {
       // this is a temporary cookie and we dont need this anymore
       this.cookieService.deleteCookie('locateAuth');
     } else {
-      // temp fix
-      // this.isUserAuthenticated = true;
-      // this.logout();
+     // temp fix
+      this.isUserAuthenticated = true;
+      this.logout();
     }
   }
   getAll() {

@@ -24,7 +24,8 @@ import { fakeBackendProvider } from './shared/services/fake-backend';
 import { ParticlesModule } from 'angular-particle';
 import { AlertService } from './shared/components/alerts/alert.service';
 import { MenuComponent } from './shared/components/menu/menu.component';
-import { HeaderSearchComponent } from './shared/components/header-search/header-search.component';
+import { HeaderSearchComponent } from './shared/components/header-search/header-search.component';;
+
 @NgModule({
     imports: [
         BrowserModule,

@@ -16,9 +16,16 @@ import {
   MatButtonModule, MatCheckboxModule,
   MatFormFieldModule, MatInputModule, MatButtonToggleModule, MatIconModule
 } from '@angular/material';
+import { GraphComponent } from '../mainpannel/table/maindata/graph/graph.component';
 
 @NgModule({
-  declarations: [TableComponent, CarouselComponent, DashboardHomeComponent, ChatfeatureComponent ],
+  declarations: [
+    TableComponent,
+    CarouselComponent,
+    DashboardHomeComponent,
+    ChatfeatureComponent,
+    GraphComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -34,10 +41,10 @@ import {
     DataTableModule,
     MatFormFieldModule,
     MatButtonModule,
-        MatButtonToggleModule,
-        MatIconModule,
-        MatInputModule,
-        MatCheckboxModule 
+    MatButtonToggleModule,
+    MatIconModule,
+    MatInputModule,
+    MatCheckboxModule
   ]
 })
 export class DashboardModule { }

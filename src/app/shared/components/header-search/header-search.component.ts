@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchEmitterModel } from './searchEmitter-model';
 import { HomeService } from 'src/app/home/home.service';
+import { UserService } from '../../security/user.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -24,7 +25,8 @@ export class HeaderSearchComponent implements OnInit {
 
   constructor(
     public router: Router,
-    public homeService: HomeService) {
+    public homeService: HomeService,
+    public userService: UserService) {
     this.searchText = '';
   }
   public appItems: Array<any>;

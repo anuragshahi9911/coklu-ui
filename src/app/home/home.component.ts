@@ -39,8 +39,9 @@ export class HomeComponent implements OnInit {
     this.hideMenu();
     let item1 = new MenuModel('Dashboard', 'nl', '', '', '/')
     let item2 = new MenuModel('Chat', '/home/dashboard/chat', '', '', 'null')
-    let item3 = new MenuModel('Other', 'nl', '', '', '/')
-    this.menuItems = [item1,item2,item3];
+    let item3 = new MenuModel('Graph', '/home/dashboard/graph', '', '', 'null')
+    let item4 = new MenuModel('Other', 'nl', '', '', '/')
+    this.menuItems = [item1,item2,item3, item4];
     let user = new UserProfileItem('Anurag Shahi', '', '')
     this.userProfileItems = [user];
   }
