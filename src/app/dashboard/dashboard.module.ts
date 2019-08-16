@@ -8,15 +8,16 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { SliderModule } from 'primeng/slider';
 import { FormsModule } from '@angular/forms';
-import { BreadcrumbComponent } from '../home/breadcrumb/breadcrumb.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
-import { ChatfeatureComponent } from '../mainpannel/table/maindata/chatfeature/chatfeature.component';
 import {
   MatButtonModule, MatCheckboxModule,
   MatFormFieldModule, MatInputModule, MatButtonToggleModule, MatIconModule
 } from '@angular/material';
-import { GraphComponent } from '../mainpannel/table/maindata/graph/graph.component';
+import { ChatfeatureComponent } from '../mainpannel/maindata/chatfeature/chatfeature.component';
+import { GraphComponent } from '../mainpannel/maindata/graph/graph.component';
+import { CardsComponent } from '../mainpannel/maindata/cards/cards.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { GraphComponent } from '../mainpannel/table/maindata/graph/graph.compone
     CarouselComponent,
     DashboardHomeComponent,
     ChatfeatureComponent,
-    GraphComponent
+    GraphComponent,
+    CardsComponent  
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,9 @@ import { GraphComponent } from '../mainpannel/table/maindata/graph/graph.compone
     MatButtonToggleModule,
     MatIconModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    SharedModule  
   ]
+  
 })
 export class DashboardModule { }

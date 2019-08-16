@@ -20,7 +20,7 @@
 }
 
 ::ng-deep .alert{
-    border-radius: 0px!important;/*override bootstrap default*/
+    border-radius: 14px!important;/*override bootstrap default*/
     position: absolute;
     margin-left: 80%;
     margin-top: 2%;

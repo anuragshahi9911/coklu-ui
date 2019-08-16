@@ -11,6 +11,7 @@
 @import './src/assets/_custom-styles';
 @import './src/assets/one-home-style';
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '~@angular/cdk/overlay-prebuilt.css';
 html { font-size: 100% } //usually 16px 
 div { font-size: 16px; } 
 div>p { font-size: 14px; }

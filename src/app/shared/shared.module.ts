@@ -8,42 +8,45 @@ import { BreadcrumbComponent } from "../home/breadcrumb/breadcrumb.component";
 import { AlertService } from "./components/alerts/alert.service";
 import { ConfirmDialogService } from "./components/confirm-dialog/confirm-dialog.service";
 import { MenuComponent } from './components/menu/menu.component';
-
+import { TooltipComponent } from "@angular/material";
+import { TooltipDirective } from "./components/tooltip/tooltip.directive";
 
 @NgModule({
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    CommonModule,
-  ],
+    CommonModule
+    ],
   declarations: [
     AlertsComponent,
     ConfirmDialogComponent,
     DatePickerComponent,
     BreadcrumbComponent,
-    MenuComponent
-
+    MenuComponent,
+    TooltipComponent,
+    TooltipDirective
   ],
   exports: [
     AlertsComponent,
     ConfirmDialogComponent,
-    FormsModule,
-    ReactiveFormsModule,
     DatePickerComponent,
-    BreadcrumbComponent
-
+    BreadcrumbComponent,
+    MenuComponent,
+    TooltipComponent,
+    TooltipDirective
   ],
   providers: [
+    AlertService,
+    ConfirmDialogService
+  ],
+  entryComponents: [
+    TooltipComponent
   ]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: SharedModule,
-      providers: [
-        AlertService,
-        ConfirmDialogService
-      ]
+      ngModule: SharedModule
     };
   }
 }

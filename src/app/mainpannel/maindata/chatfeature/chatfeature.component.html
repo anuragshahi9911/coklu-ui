@@ -20,7 +20,7 @@
         <mat-form-field>
           <input name="clientMessage" matInput placeholder="Write a message" type="text" [(ngModel)]="clientMessage">
         </mat-form-field>
-        <button mat-fab type="submit">
+        <button awesomeTooltip="Hello World!" mat-fab type="submit">
           <i class="material-icons">send</i>
         </button>
         <button mat-fab (click)="toggleIsBroadcast()" type="button" [ngClass]="{'disabled': !isBroadcast}">

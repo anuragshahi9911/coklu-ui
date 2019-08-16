@@ -3,7 +3,10 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { User } from './shared/models/user.model';
 
-@Component({ selector: 'app', templateUrl: 'app.component.html' })
+@Component({ 
+    selector: 'app',
+    templateUrl: 'app.component.html'
+ })
 export class AppComponent {
     currentUser: User;
 
