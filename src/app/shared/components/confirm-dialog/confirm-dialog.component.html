@@ -1,0 +1,23 @@
+<div *ngIf="!hidden">
+  <!-- <div class="backdrop" (click)="$event.stopPropagation();$event.preventDefault();hide()"></div> -->
+  <div class="backdrop"></div>
+  <div class="modal-confirm">
+    <div class="modal-body text-center">
+      <ng-content></ng-content>
+      <p>
+        <ng-container *ngFor="let line of messageLines">
+          <span [innerHtml]="line"></span>
+          <br/>
+        </ng-container>
+      </p>
+
+      <button type="button" class="btn" (click)="confirm()">{{buttonA}}</button>
+      <button *ngIf="buttonB" type="button" class="btn" (click)="yestoall()">{{buttonB}}</button>
+      <button *ngIf="buttonC" type="button" class="btn btn-primary" (click)="decline()">{{buttonC}}</button>
+      <button *ngIf="buttonD" type="button" class="btn" (click)="notoall()">{{buttonD}}</button>
+      <button *ngIf="buttonE" type="button" class="btn" (click)="cancel()">{{buttonE}}</button>
+    </div>
+
+
+  </div>
+</div>

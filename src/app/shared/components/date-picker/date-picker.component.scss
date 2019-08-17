@@ -1,0 +1,100 @@
+.textBox-style{    
+    padding-left: 10px;
+    width: 284px;
+    margin-left: 2px;
+    height: 36px;
+    border: 1px solid #d6d9dc;
+  }
+
+  .date-range-picker-icon {
+    margin-left: -25px;
+    z-index: 1;
+  }
+
+  ::ng-deep .datepicker-style .md-drppicker{
+    position: absolute !important;
+    font-family: Roboto,sans-serif !important;
+    color: inherit !important;
+    border-radius: 4px !important;
+    width: 285px !important;
+    padding: 4px !important;
+    margin-top: 0px !important;
+    overflow: hidden !important;
+    z-index: 1000 !important;
+    font-size: 14px !important;
+    background-color: #fff !important;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.16), 0 2px 8px 0 rgba(0,0,0,.12) !important;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.16), 0 2px 8px 0 rgba(0,0,0,.12) !important;
+}
+
+::ng-deep .datepicker-style-side .md-drppicker{
+    position: absolute !important;
+    font-family: Roboto,sans-serif !important;
+    color: inherit !important;
+    border-radius: 4px !important;
+    width: 285px !important;
+    padding: 4px !important;
+    bottom: 90px !important;
+    left: 300px !important;
+    margin-top: 0px !important;
+    overflow: hidden !important;
+    z-index: 1000 !important;
+    font-size: 14px !important;
+    background-color: #fff !important;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.16), 0 2px 8px 0 rgba(0,0,0,.12) !important;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.16), 0 2px 8px 0 rgba(0,0,0,.12) !important;
+}
+@media screen and (max-width: 992px){
+    ::ng-deep .datepicker-style-side .md-drppicker{
+        width: 285px !important;
+        padding: 4px !important;
+        bottom: 90px !important;
+        left: 10px !important; 
+    }
+}
+// common styles
+::ng-deep .md-drppicker td.active, .md-drppicker td.active:hover{
+    background-color: #FF2852 !important;
+}
+  
+::ng-deep .md-drppicker .btn{
+    background-color: #FF2852 !important;
+}
+
+::ng-deep .md-drppicker .btn.btn-default {
+    color: #000;
+    background-color: #dcdcdc !important;
+}
+
+::ng-deep .md-drppicker .btn.btn-default:hover {
+    color: #000;
+    background-color: #dcdcdc !important;
+}
+
+::ng-deep .md-drppicker .btn:focus, .md-drppicker .btn:hover {
+    background-color: #FF2852 !important;
+}
+
+
+// // styles for stepper
+// ::ng-deep .datepicker-style-side .md-drppicker td.active, .md-drppicker td.active:hover{
+//     background-color: #FF2852 !important;
+// }
+  
+// ::ng-deep .datepicker-style-side .md-drppicker .btn{
+//     background-color: #FF2852 !important;
+// }
+
+// ::ng-deep .datepicker-style-side .md-drppicker .btn.btn-default {
+//     color: #000;
+//     background-color: #dcdcdc !important;
+// }
+
+// ::ng-deep .datepicker-style-side .md-drppicker .btn.btn-default:hover {
+//     color: #000;
+//     background-color: #dcdcdc !important;
+// }
+
+// ::ng-deep .datepicker-style-side .md-drppicker .btn:focus, .md-drppicker .btn:hover {
+//     background-color: #FF2852 !important;
+// }

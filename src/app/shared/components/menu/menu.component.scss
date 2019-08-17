@@ -1,0 +1,333 @@
+.side-nav-container {
+    height: 90%;
+      width: 100%;
+      margin: 0;
+    }
+  .header {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+  }
+  .logo {
+    max-height: 62px;
+    max-width: 61px;
+    margin-left: -45px;
+  }
+  .icon {
+    margin-left: 60px;
+  }
+  .content {
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .content {
+       width: 100%;
+       overflow: hidden;
+       margin: 0 -150px 0 -150px;
+    }
+  }
+  .push-right {
+    margin-left: 1005px;
+  }
+  .pull-left {
+    margin-left: 91px;
+  }
+  .container {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .side-pannel {
+  background-color: black;
+  }
+  .sidenav-item {
+    color: white;
+  }
+  /* The sidebar menu */
+.sidebar {
+  height: 100vh; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+.sidebarTrue {
+  width: 250px;
+}
+.mainContent {
+  display: flex;
+}
+.sidebarFalse {
+  width: 60px;
+}
+.mainTrue {
+  margin-left: 0px;
+}
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.sidebar .logos {
+  margin-left: 8px;
+  display: flex;
+}
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {
+    padding-top: 15px;
+  }
+  .sidebar a {
+    font-size: 18px;
+  } 
+}
+@media screen and (min-height: 450px) {
+  .sidebar {
+    padding-top: 15px;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
+  
+}
+
+
+
+
+
+
+//width to menu is specified as per existing one-home stylings
+.sidebar {
+    width: 220px !important;
+    position: fixed !important;
+    height: 100vh !important;
+    background-color: black !important;
+    z-index: 100 !important;
+    left: 0 !important;
+    top: 0 !important;
+    
+}
+
+.onehome-style{
+    height: 30px !important;
+    width: 157px !important;
+    padding-top: 23px !important;
+    padding-left: 66px !important;
+    align-items: center !important;
+    display: flex !important;
+
+   
+    white-space: nowrap !important;
+    font-weight: 400 !important;
+}
+.d-flex {
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+ }
+
+.d-inline-block {
+    display: inline-block !important;
+ }
+
+
+ //Menu Link
+
+ .nav-item{
+    display: block !important;
+   
+}
+
+.nav {
+    margin-bottom: 0 !important;
+    padding-left: 0 !important;
+    list-style: none !important;
+    height: 30px !important;
+    
+  }
+  
+  .nav:before,
+  .nav:after {
+    content: " " !important;
+    display: table !important;
+  }
+  
+  .nav:after {
+    clear: both !important;
+  }
+  
+  .nav > li {
+    position: relative !important;
+    display: block !important;
+  }
+  
+  .nav > li > a {
+    position: relative !important;
+    display: block !important;
+    padding: 10px 15px !important;
+    color: white !important;
+    padding-right:134px  !important;
+    padding-left:15px !important;
+    padding-top:10px !important;
+    padding-bottom:10px !important;
+
+  }
+  
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    text-decoration: none !important;
+    
+    background-color: #fa0606 !important;
+  }
+  
+  .nav > li.disabled > a {
+    color: #777777 !important;
+  }
+  
+  .nav > li.disabled > a:hover,
+  .nav > li.disabled > a:focus {
+    color: #fa0606 !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+    cursor: not-allowed !important;
+  }
+  
+  .nav .open > a,
+  .nav .open > a:hover,
+  .nav .open > a:focus {
+    background-color: #fa0606 !important;
+    border-color: #3097D1 !important;
+  
+  }
+  
+  .nav .nav-divider {
+    height: 1px !important;
+    margin: 10px 0 !important;
+    overflow: hidden !important;
+    background-color: #e5e5e5 !important;
+  }
+  
+  .nav > li > a > img {
+    max-width: none !important;
+  }
+
+  a:-webkit-any-link {
+    color: -webkit-link !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+.icon_add_user {
+    min-height: 13px !important;
+    line-height: 13px !important;
+    height: 30px !important;
+    font-size: 18px !important;
+    
+}
+.link-style{
+    padding-left: 20px !important;
+    
+}
+.icon-style{
+    padding-left : 15px !important;
+}
+.style-main{
+padding-top: 40px !important;
+padding-left:10px !important;
+}
+
+.nav-link {
+   
+    display: block !important;
+    padding: 0.75rem 5.25rem !important; }
+    .nav-link:hover, .nav-link:focus {
+      text-decoration: none !important; }
+    .nav-link.disabled {
+      color: #6a737b !important; }
+
+ .nav .nav-item .icon {
+        display: none !important;
+      }
+//width given as per existing one-home stylings
+      @media screen and (max-width: 1100px) {
+        
+        
+        .nav .nav-item a.icon {
+          float: left !important;
+          display: block !important;
+          color: #3097D1 !important;
+          right:0px !important;
+          top:0px !important;
+          background-color: white !important;
+        }
+        
+
+
+      }     
+
+      @media screen and (max-width: 1100px) {
+        .nav .nav-item.responsive {position: relative !important;}
+        .nav .nav-item.responsive a.icon {
+          position: absolute !important;
+          right: 0 !important;
+          top: 0 !important;
+        }
+        .nav .nav-item.responsive a {
+          float: none !important;
+          display: block !important;
+          text-align: left !important;
+        }
+      } 
+.nav-item-wrapper :hover {
+  cursor: pointer !important;
+}
+
+
+     
+
+              @media screen and (max-width: 1100px) {
+                .nav .nav-item  a.test.icon {display: block !important;}
+              }

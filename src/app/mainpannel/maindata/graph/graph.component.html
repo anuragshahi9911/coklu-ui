@@ -1,0 +1,24 @@
+<div class="cardHolder">
+  <div class="card" style="width: 22rem;">
+    <select (change) = "changeCurrency1($event.target.value)" [(ngModel)]="selectedCurrency1">
+      <option *ngFor="let item of items" [value]="item.currency_name">{{item.currency_name}}</option>
+    </select>
+    <canvas id="myChart1" #myChart1 width="400" height="400"></canvas>
+  </div>
+  <div class="card" style="width: 22rem;">
+    <select (change) = "changeCurrency2($event.target.value)" [(ngModel)]="selectedCurrency2">
+      <option *ngFor="let item of items" [value]="item.currency_name">{{item.currency_name}}</option>
+    </select>
+    <canvas id="myChart2" #myChart2 width="400" height="400"></canvas>
+  </div>
+  <div class="card" style="width: 22rem;">
+    <select (change) = "changeCurrency3($event.target.value)" [(ngModel)]="selectedCurrency3">
+      <option *ngFor="let item of items" [value]="item.currency_name">{{item.currency_name}}</option>
+    </select>
+    <div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
+  </div>
+</div>
+
+<div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
+
+<button awesomeTooltip="Hello World!">Hi there, I have a tooltip</button>

@@ -1,0 +1,15 @@
+<!--to get the width of the screen-->
+<div (window:resize)="onResize($event)" class="mainContainer"> 
+    <!-- styles added based on menu appearance and disappearance for responsiveness  -->
+    <app-menu *ngIf = "homeService.isMenu" [menuItems] = "menuItems" ></app-menu>
+    <app-header-search class = "header-style"  [userProfileItems] = "userProfileItems" ></app-header-search>
+  
+     <!-- <app-header-search class = "header-style" [userProfileItems] = "userProfileItems"></app-header-search> -->
+     <div [ngClass] = "{'router-style': homeService.isMenu, 'router-style-md': !homeService.isMenu}">
+        <router-outlet></router-outlet>
+        
+     </div>
+ </div>
+ 
+ 
+ 

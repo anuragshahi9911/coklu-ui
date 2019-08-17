@@ -1,0 +1,27 @@
+<div>
+    <div class = "sidebar">
+     
+        <span class="nav-item nav-item-wrapper">
+          <a href="/">
+            <img src="assets/coklu.png" height="80" width="120">
+          </a>
+        </span>
+  
+     
+      <div class="side-panel">
+          <div class="style-main">
+  
+  
+              <ul class="nav">
+                  <li class="nav-item nav-item-wrapper">
+                    <a *ngFor="let option of menuItems" (click)="menuClicked(option)"><i class="{{option.icon}} mr-4"></i>{{option.name}}</a>
+                    
+                  </li>
+              </ul>
+              </div>
+      </div>
+    </div>
+  </div>
+  <a href="javascript:void(0);" [ngClass]="{'test' : togglemenu ,'icon': true }"  (click)="myFunction()">
+      <i class="fa fa-bars"></i>
+  </a>

@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg sticky-top flex-md-nowrap p-0" [ngClass]="{'main-style':homeService.isMenu}">
+  <ul class="navbar-nav clearfix">
+    <!--display's the hamburger icon based on width of the screen-->
+    <li *ngIf="homeService.isMenuIcon" class="nav-item nav-item-sidebar-toggle text-nowrap">
+      <a href="javascript:void(0);" (click)="menuIcon()" class="nav-link square sidebar-toggler">
+        <span class="icon-menu"></span>
+      </a>
+    </li>
+    <li class="nav-item text-nowrap dropdown app-nav">
+        <span id="navbarDropdown1" role="button" data-toggle="dropdown" data-target="#" aria-haspopup="true"
+        aria-expanded="false" class="nav-link user-menu">
+        <img src="assets/coklu.png" class="img-fluid br-100 avatar">
+        <span class="ml-4">Anurag Shahi</span>
+      </span>
+      <div  aria-labelledby="navbarDropdown1" class="dropdown-menu dropdown-menu-right">
+        <a href="/settings-profile" class="dropdown-item pr-4">
+          <span class="icon-user mr-3"></span>Edit Profile</a>
+        <a href="/change-password" class="dropdown-item pr-4">
+          <span class="icon-key mr-3"></span>Change Password</a>
+        <a href="/login" class="dropdown-item pr-4">
+          <span class="icon-logout mr-3"></span>Sign Out</a>
+      </div>
+    </li>
+
+  </ul>
+  <div class="navbar-search">
+
+  </div>
+
+</nav>
