@@ -10,6 +10,7 @@ import { ConfirmDialogService } from "./components/confirm-dialog/confirm-dialog
 import { MenuComponent } from './components/menu/menu.component';
 import { TooltipComponent } from "@angular/material";
 import { TooltipDirective } from "./components/tooltip/tooltip.directive";
+import { BarchartComponent } from './components/charts/barchart/barchart.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { TooltipDirective } from "./components/tooltip/tooltip.directive";
     BreadcrumbComponent,
     MenuComponent,
     TooltipComponent,
-    TooltipDirective
+    TooltipDirective,
+    BarchartComponent
   ],
   exports: [
     AlertsComponent,
@@ -33,7 +35,8 @@ import { TooltipDirective } from "./components/tooltip/tooltip.directive";
     BreadcrumbComponent,
     MenuComponent,
     TooltipComponent,
-    TooltipDirective
+    TooltipDirective,
+    BarchartComponent
   ],
   providers: [
     AlertService,

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GraphService {
-
+ 
   constructor(private httpClient: HttpClient) { 
   }
   public getCurrencyPairs(): Observable<any> {
