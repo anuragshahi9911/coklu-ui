@@ -12,6 +12,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./graph.component.scss']
 })
 export class GraphComponent implements OnInit {
+  data2: Observable<DataModel>;
+  
   // socket1: WebSocketSubject<{}>;
   // socket2: WebSocketSubject<{}>;
   // socket3: WebSocketSubject<{}>;
@@ -28,6 +30,8 @@ export class GraphComponent implements OnInit {
    // this.socket2 = new WebSocketSubject('wss://stocksimulator.intuhire.com');
    // this.socket3 = new WebSocketSubject('wss://stocksimulator.intuhire.com');
    this.data = this.http.get<DataModel>('./assets/data.json');
+   this.data2 = this.http.get<DataModel>('./assets/data2.json');
+
 
   }
   data: Observable<DataModel>;

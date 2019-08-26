@@ -14,6 +14,7 @@ export class BarchartComponent implements OnChanges {
   data: DataModel[];
 
   margin = {top: 20, right: 20, bottom: 30, left: 40};
+  color: any;
 
   constructor() { }
 
@@ -33,10 +34,12 @@ export class BarchartComponent implements OnChanges {
 
     const svg = d3.select(element).append('svg')
         
-        .attr('style', ' height: 100% ; width: 100%;');
+    .attr('style', ' height: 100% ; width: 100%;');
     const contentWidth = element.offsetWidth - this.margin.left - this.margin.right;
     const contentHeight = element.offsetHeight - this.margin.top - this.margin.bottom;
-
+    this.color = d3.scaleOrdinal()
+    .domain(Object.keys(this.data))
+    .range(d3.schemeDark2);
     const x = d3
       .scaleBand()
       .rangeRound([0, contentWidth])
@@ -70,6 +73,7 @@ export class BarchartComponent implements OnChanges {
       .data(data)
       .enter().append('rect')
         .attr('class', 'bar')
+        .attr('fill',(d) => { return (this.color(d.frequency)) })
         .attr('x', d => x(d.letter))
         .attr('y', d => y(d.frequency))
         .attr('width', x.bandwidth())

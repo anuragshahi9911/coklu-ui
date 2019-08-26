@@ -11,6 +11,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { TooltipComponent } from "@angular/material";
 import { TooltipDirective } from "./components/tooltip/tooltip.directive";
 import { BarchartComponent } from './components/charts/barchart/barchart.component';
+import { PiechartComponent } from './components/charts/piechart/piechart.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { BarchartComponent } from './components/charts/barchart/barchart.compone
     MenuComponent,
     TooltipComponent,
     TooltipDirective,
-    BarchartComponent
+    BarchartComponent,
+    PiechartComponent
   ],
   exports: [
     AlertsComponent,
@@ -36,7 +38,8 @@ import { BarchartComponent } from './components/charts/barchart/barchart.compone
     MenuComponent,
     TooltipComponent,
     TooltipDirective,
-    BarchartComponent
+    BarchartComponent,
+    PiechartComponent
   ],
   providers: [
     AlertService,
