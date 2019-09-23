@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren } from '@angular/core';
-import Chart from 'chart.js';
-import * as CanvasJS from 'canvasjs/dist/canvasjs.min';
 import { WebSocketSubject } from 'rxjs/internal/observable/dom/WebSocketSubject';
 import { GraphService } from './graph.service';
 import { Observable } from 'rxjs';

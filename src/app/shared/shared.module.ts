@@ -12,6 +12,8 @@ import { TooltipComponent } from "@angular/material";
 import { TooltipDirective } from "./components/tooltip/tooltip.directive";
 import { BarchartComponent } from './components/charts/barchart/barchart.component';
 import { PiechartComponent } from './components/charts/piechart/piechart.component';
+import { fakeBackendProvider } from "./services/fake-backend";
+
 
 @NgModule({
   imports: [
@@ -43,7 +45,9 @@ import { PiechartComponent } from './components/charts/piechart/piechart.compone
   ],
   providers: [
     AlertService,
-    ConfirmDialogService
+    ConfirmDialogService,
+    fakeBackendProvider
+    
   ],
   entryComponents: [
     TooltipComponent

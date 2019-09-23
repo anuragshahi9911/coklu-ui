@@ -23,6 +23,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { SharedModule } from './shared/shared.module';
 import { TooltipDirective } from './shared/components/tooltip/tooltip.directive';
 import { TooltipComponent } from './shared/components/tooltip/tooltip.component';
+import { FakeBackendInterceptor } from './shared/services/fake-backend';
 
 @NgModule({
     imports: [
@@ -50,7 +51,7 @@ import { TooltipComponent } from './shared/components/tooltip/tooltip.component'
     providers: [
         SharedModule,
         AlwaysAuthChildrenGuard
-    ],
+        ],
     bootstrap: [AppComponent],
     entryComponents: [
         TooltipComponent

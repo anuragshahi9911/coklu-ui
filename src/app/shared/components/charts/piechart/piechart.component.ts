@@ -1,64 +1,70 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import * as d3 from "d3";
+import { Component, OnInit, ViewChild, ElementRef, OnChanges, AfterViewInit } from '@angular/core';
+import { DataService } from './data.service';
+import { IData } from './data.interface';
+import { Chart } from 'chart.js';
+
 @Component({
   selector: 'app-piechart',
   templateUrl: './piechart.component.html',
   styleUrls: ['./piechart.component.scss']
 })
-export class PiechartComponent implements OnInit {
-  @ViewChild('chart')
-  private chartContainer: ElementRef;
-  width = 300
-  height = 300
-  margin = 100
-  radius;
-  svg;
-  color;
-  pie;
-  data_ready;
-
-  // Create dummy data
-  public data = { a: 9, b: 20, c: 30, d: 8, e: 12 }
-
-  constructor() { }
-
-  ngOnInit() {
-
-    this.draw();
-
-  }
-
-  draw() {
-    const element = this.chartContainer.nativeElement;
-    this.radius = Math.min(this.width, this.height) / 2 - this.margin
-    this.svg = d3.select(element).append('svg') 
-      .append("g")
-      .attr("transform", "translate(" + this.width / 2 + "," +
-        this.height / 3  + ")");
-
-    // set the color scale
-    this.color = d3.scaleOrdinal()
-      .domain(Object.keys(this.data))
-      .range(d3.schemeDark2);
-
-    // Compute the position of each group on the pie:
-    this.pie = d3.pie()
-      .value(function (d: any) { return d.value })
+export class PiechartComponent implements OnInit   {
+    title = 'app';  
+    data: IData[];  
+    Player = [];  
+    Run = [];  
+    chart = [];  
+    constructor(private dataService: DataService) { }  
     
-    this.data_ready = this.pie(d3.entries(this.data))
+    ngOnInit() {  
+      this.dataService.getData().subscribe((result: Array<IData>) => {  
+        result.forEach(x => {  
+          this.Player.push(x.PlayerName);  
+          this.Run.push(x.Run);  
+        });  
+        this  
+        this.chart = new Chart('canvas', {  
+          type: 'pie',  
+          data: {  
+            labels: this.Player,  
+            datasets: [  
+              {  
+                data: this.Run, 
+                labels: this.Player,
+                legend : false,
+                borderColor: '#3cba9f',  
+                backgroundColor: [  
+                  "#3cb371",  
+                  "#0000FF",  
+                  "#9966FF",  
+                  "#4C4CFF",  
+                  "#00FFFF",  
+                  "#f990a7",  
+                  "#aad2ed",  
+                  "#FF00FF",  
+                  "Blue",  
+                  "Red",  
+                  "Blue"  
+                ],  
+                fill: true  
+              }  
+            ]  
+          },  
+          options: {  
+            legend: {  
+              display: true  
+            },  
+            scales: {  
+              xAxes: [{  
+                display: false  
+              }],  
+              yAxes: [{  
+                display: false  
+              }],  
+            }
+          }  
+        });  
+      });  
+    } 
 
-    this.svg
-      .selectAll('whatever')
-      .data(this.data_ready)
-      .enter()
-      .append('path')
-      .attr('d', d3.arc()
-        .innerRadius(75)         // This is the size of the donut hole
-        .outerRadius(this.radius))
-      .attr('fill',(d) => { return (this.color(d.data.key)) })
-      .attr("stroke", "black")
-      .style("stroke-width", "2px")
-      .style("opacity", 0.7)
-      .style("height", "300px;")
-  }
 }
