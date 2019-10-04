@@ -52,7 +52,7 @@ export class PiechartComponent implements OnInit   {
           },  
           options: {  
             legend: {  
-              display: true  
+              display: false  
             },  
             scales: {  
               xAxes: [{  

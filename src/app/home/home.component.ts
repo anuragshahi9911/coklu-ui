@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { User } from '../shared/models/user.model';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../shared/services/authentication.service';
-import { UserService } from '../shared/security/user.service';
 import { first } from 'rxjs/operators';
 import { MenuModel } from '../shared/models/menu.model';
 import { UserProfileItem } from '../shared/components/header-search/header-user-profile';
 import { HomeService } from './home.service';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadAllUsers();
+    // this.loadAllUsers();
   }
 
   ngOnDestroy() {
@@ -66,20 +66,12 @@ export class HomeComponent implements OnInit {
       this.homeService.isMenuIcon = false;
     }
   }
-  private deleteUser(id: number) {
-    this.userService.delete(id).pipe(first()).subscribe(() => {
-      this.loadAllUsers()
-    });
-  }
+ 
   public logout() {
     this.authenticationService.logout();
     this.router.navigate(['/']);
   }
-  private loadAllUsers() {
-    this.userService.getAll().pipe(first()).subscribe(users => {
-      this.users = users;
-    });
-  }
+ 
   /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
   public toogleNav() {
     this.sidebarFlag = this.sidebarFlag ? false : true;

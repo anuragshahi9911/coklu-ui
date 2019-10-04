@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchEmitterModel } from './searchEmitter-model';
 import { HomeService } from 'src/app/home/home.service';
-import { UserService } from '../../security/user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   // tslint:disable-next-line:component-selector

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NavigationService } from '../../services/navigation.service';
 import { MenuModel } from '../../models/menu.model';
+import { NavigationService } from '../../services/navigation.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,8 +12,8 @@ export class MenuComponent implements OnInit {
   public menu: MenuModel[] = [];
   public assetsUrl: any;
   public moduleName: string;
-  constructor(
-    public navService: NavigationService) {
+  constructor(private navService: NavigationService
+    ) {
     this.assetsUrl = '/';
   }
   public togglemenu = true;

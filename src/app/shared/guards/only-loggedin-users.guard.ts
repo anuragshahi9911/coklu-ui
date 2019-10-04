@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
-import { UserService } from '../security/user.service';
-import { NavigationService } from '../services/navigation.service';
 import { Observable } from 'rxjs/internal/Observable';
+import { UserService } from '../services/user.service';
 
 @Injectable()
 export class OnlyLoggedInUsersGuard implements CanActivate {
 
   constructor(private userService: UserService,
-    private navService: NavigationService) { }
+    ) { }
 
   public canActivate(
     route: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if (this.userService.isAuthenticatedUser()) {
+      if (this.userService.isLoggedIn()) {
         return true;
       } else {
-        return false;
+        return false; 
       }
     }
 }
