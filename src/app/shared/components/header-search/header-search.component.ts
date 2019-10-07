@@ -49,4 +49,11 @@ export class HeaderSearchComponent implements OnInit {
       this.homeService.isMenu = true;
     }
   }
+  public logout() {
+    this.userService.deleteToken();
+    this.router.navigate(['/login']);
+  }
+  public editProfile() {
+    this.router.navigate(['/userprofile']);
+  }
 }

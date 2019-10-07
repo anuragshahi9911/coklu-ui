@@ -24,8 +24,7 @@ export class UserProfileComponent implements OnInit {
     );
   }
  
-  onLogout(){
-    this.userService.deleteToken();
-    this.router.navigate(['/login']);
+  onBack(){
+    this.router.navigate(['/home']);
   }
 }

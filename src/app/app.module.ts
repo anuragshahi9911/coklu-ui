@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
-import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
@@ -47,9 +46,7 @@ import { AuthInterceptor } from './shared/guards/auth.interceptor';
         SharedModule
     ],
     declarations: [
-        AppComponent,
-        LoginComponent,
-        
+        AppComponent,       
         HomeComponent,
         HeaderSearchComponent,
         TooltipComponent

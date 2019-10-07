@@ -1,6 +1,5 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '../../node_modules/@angular/common';
-import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { RootAuthGuard } from './shared/guards/root-auth.guard';
@@ -10,7 +9,11 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [RootAuthGuard] },
+  { path: '', 
+    redirectTo: '/home',
+    pathMatch: 'full',
+    canActivate:[RootAuthGuard]
+ },
   {
     path: 'signup', component: UserComponent,
     children: [{ path: '', component: SignUpComponent }]
@@ -20,16 +23,18 @@ const appRoutes: Routes = [
     children: [{ path: '', component: SignInComponent }] 
   },
   {
-    path: 'userprofile', component: UserProfileComponent,canActivate:[RootAuthGuard]
+    path: 'userprofile', component: UserProfileComponent
   },
-  { path: 'logout', component: LoginComponent },
+  { 
+    path: 'logout', component: UserComponent
+  },
   {
     path: 'home', component: HomeComponent,
     canActivate: [RootAuthGuard],
-    canActivateChild: [AlwaysAuthChildrenGuard],
+    // canActivateChild: [AlwaysAuthChildrenGuard],
     children: [
       {
-        path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule', data: {
+        path: '', loadChildren: './dashboard/dashboard.module#DashboardModule', data: {
           title: 'Home'
         },
       }
