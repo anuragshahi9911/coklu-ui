@@ -19,17 +19,11 @@ import { ParticlesModule } from 'angular-particle';
 import { HeaderSearchComponent } from './shared/components/header-search/header-search.component';;
 import { OverlayModule } from '@angular/cdk/overlay';
 import { SharedModule } from './shared/shared.module';
-import { TooltipDirective } from './shared/components/tooltip/tooltip.directive';
 import { TooltipComponent } from './shared/components/tooltip/tooltip.component';
-import { FakeBackendInterceptor } from './shared/services/fake-backend';;
-import { UserComponent } from './user/user.component'
-;
-import { SignUpComponent } from './user/sign-up/sign-up.component'
-;
-import { SignInComponent } from './user/sign-in/sign-in.component'
-;
+import { UserComponent } from './user/user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component'
 import { AuthInterceptor } from './shared/guards/auth.interceptor';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -49,13 +43,10 @@ import { AuthInterceptor } from './shared/guards/auth.interceptor';
         AppComponent,       
         HomeComponent,
         HeaderSearchComponent,
-        TooltipComponent
-,
-        UserComponent
-,
-        SignUpComponent ,
-        SignInComponent ,
-        UserProfileComponent  ],
+        TooltipComponent,
+        UserComponent,
+        UserProfileComponent,
+       ],
     providers: [
         SharedModule,
         AlwaysAuthChildrenGuard,

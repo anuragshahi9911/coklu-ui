@@ -1,7 +1,90 @@
-<div class="wrapper">
-  <div id="formContent">
-    <h2 class="underlineHover"  routerLink="/login"  routerLinkActive="active"> Sign In </h2>
-    <h2 class="underlineHover"  routerLink="/signup"  routerLinkActive="active">Sign Up </h2>
-    <router-outlet></router-outlet>
-  </div>
+<div class="allform">
+<div class="formPart">
+    <div class="container" #container>
+        <div #signupcontainer class="form-container sign-up-container">
+          <form name="form" (ngSubmit)="f.form.valid && onSignup(f)" #f="ngForm" novalidate>
+            <h1>Create Account</h1>
+            <div class="social-container">
+              <a href="#" tooltip="Login using Facebook" class="social"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" tooltip="Login using Google" class="social"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" tooltip="Login using Linkedin" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>or use your email for registration</span>
+            <input type="text"  placeholder="Full Name" name="fullName" class="form-control" [(ngModel)]="model.fullName"
+              #fullName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && fullName.invalid }" required>
+            <div *ngIf="f.submitted && fullName.invalid" class="invalid-feedback">
+              <div *ngIf="fullName.errors.required">Full Name is required</div>
+            </div>
+            <input type="text"  placeholder="Email" name="email" class="form-control" [(ngModel)]="model.email" #email="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email>
+            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">Email must be a valid email address</div>
+            </div>
+            <input type="password"   placeholder="Password" name="password" class="form-control" [(ngModel)]="model.password"
+              #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6">
+            <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+            <div class="form-row">
+              <div class="text-center">
+                <button type="submit">Sign Up</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div #signincontainer class="form-container sign-in-container">
+          <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSignIn(signInForm)">
+            <h1>Sign in</h1>
+            <div class="social-container">
+              <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>or use your account</span>
+            <input type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Email" [pattern]="emailRegex"
+              required [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
+            <div *ngIf="signInForm.submitted && email.errors?.pattern">
+              <label class="validation-message">Invalid email address.</label>
+            </div>
+            <input type="password" autocomplete="current-password" name="password" #password="ngModel" [(ngModel)]="model.password"
+              placeholder="Password" required minlength="4" [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }">
+            <div *ngIf="signInForm.submitted && password.errors?.minlength">
+              <label class="validation-message">Minimum 4 characters.</label>
+            </div>
+            <a href="#">Forgot your password ?</a>
+            <button type="submit">Sign In</button>
+          </form>
+        </div>
+        <div #overlaycontainer class="overlay-container">
+          <div #overlay class="overlay">
+            <div #overlayleft class="overlay-panel overlay-left">
+              <h1>Welcome Back!</h1>
+              <p>To keep connected with us please login with your personal info</p>
+              <button (click)="signin()" class="ghost" #signIn>Sign In</button>
+            </div>
+            <div #overlayright class="overlay-panel overlay-right">
+              <h1>Hello, Friend!</h1>
+              <p>Enter your personal details and start journey with Coklu</p>
+              <button class="ghost" (click)="signup()" #signUp>Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<!-- <div style="margin-top:5px" class="footerPart">
+    <div class="footer">
+        <div #test>
+          <b class="text"> Follow me on </b>
+            <br>
+            <div class="icons">
+              <a href="https://github.com/kvaibhav01" target="_blank" class="social"><i class="fab fa-github"></i></a>
+              <a href="https://www.instagram.com/vaibhavkhulbe143/" target="_blank" class="social"><i class="fab fa-instagram"></i></a>
+              <a href="https://medium.com/@vaibhavkhulbe" target="_blank" class="social"><i class="fab fa-medium"></i></a>
+              <a href="https://twitter.com/vaibhav_khulbe" target="_blank" class="social"><i class="fab fa-twitter-square"></i></a>
+              <a href="https://linkedin.com/in/vaibhav-khulbe/" target="_blank" class="social"><i class="fab fa-linkedin"></i></a></div> 
+            </div>
+      </div>
+</div> -->
 </div>

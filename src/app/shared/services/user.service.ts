@@ -5,11 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    selectedUser: User = {
-        fullName: '',
-        email: '',
-        password: ''
-      };
+  
     
       noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
     

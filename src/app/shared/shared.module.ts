@@ -13,6 +13,8 @@ import { TooltipDirective } from "./components/tooltip/tooltip.directive";
 import { BarchartComponent } from './components/charts/barchart/barchart.component';
 import { PiechartComponent } from './components/charts/piechart/piechart.component';
 import { fakeBackendProvider } from "./services/fake-backend";
+import { PhoneLoginComponent } from './components/phone-login/phone-login.component';
+import { MustMatchDirective } from './components/directive/must-match.directive';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { fakeBackendProvider } from "./services/fake-backend";
     TooltipComponent,
     TooltipDirective,
     BarchartComponent,
-    PiechartComponent
+    PiechartComponent,
+    PhoneLoginComponent,
+    MustMatchDirective
   ],
   exports: [
     AlertsComponent,
