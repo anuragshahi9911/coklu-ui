@@ -1,47 +1,54 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren } from '@angular/core';
-import Chart from 'chart.js';
-import * as CanvasJS from 'canvasjs/dist/canvasjs.min';
 import { WebSocketSubject } from 'rxjs/internal/observable/dom/WebSocketSubject';
 import { GraphService } from './graph.service';
+import { Observable } from 'rxjs';
+import { DataModel } from '../../../shared/components/charts/barchart/barchart.datamodel';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.scss']
 })
 export class GraphComponent implements OnInit {
-  socket1: WebSocketSubject<{}>;
-  socket2: WebSocketSubject<{}>;
-  socket3: WebSocketSubject<{}>;
-  public serverMessages1 = new Array<any>();
-  public serverMessages2 = new Array<any>();
-  public serverMessages3 = new Array<any>();
-  public items;
-  public selectedCurrency1: String;
-  public selectedCurrency2: String;
-  public selectedCurrency3: String;
-  // @ViewChildren("myChart") myChart1: ElementRef;
-  constructor(private graphService: GraphService) {
-    this.socket1 = new WebSocketSubject('wss://stocksimulator.intuhire.com');
-    this.socket2 = new WebSocketSubject('wss://stocksimulator.intuhire.com');
-    this.socket3 = new WebSocketSubject('wss://stocksimulator.intuhire.com');
+  data2: Observable<DataModel>;
+  
+  // socket1: WebSocketSubject<{}>;
+  // socket2: WebSocketSubject<{}>;
+  // socket3: WebSocketSubject<{}>;
+  // public serverMessages1 = new Array<any>();
+  // public serverMessages2 = new Array<any>();
+  // public serverMessages3 = new Array<any>();
+  // public items;
+  // public selectedCurrency1: String;
+  // public selectedCurrency2: String;
+  // public selectedCurrency3: String;
+  // // @ViewChildren("myChart") myChart1: ElementRef;
+  constructor(private graphService: GraphService, private http: HttpClient) {
+   /// this.socket1 = new WebSocketSubject('wss://stocksimulator.intuhire.com');
+   // this.socket2 = new WebSocketSubject('wss://stocksimulator.intuhire.com');
+   // this.socket3 = new WebSocketSubject('wss://stocksimulator.intuhire.com');
+   this.data = this.http.get<DataModel>('./assets/data.json');
+   this.data2 = this.http.get<DataModel>('./assets/data2.json');
+
 
   }
+  data: Observable<DataModel>;
   ngOnInit() {
-    let dataPoints = [];
-    let dpsLength = 0;
-    let chart = new CanvasJS.Chart("chartContainer", {
-      exportEnabled: true,
-      title: {
-        text: "Live Chart with Data-Points from External JSON"
-      },
-      data: [{
-        type: "spline",
-        dataPoints: this.items,
-      }]
-    });
-    this.graphService.getCurrencyPairs().subscribe((data) => {
-      this.items = data;
-    });
+    // let dataPoints = [];
+    // let dpsLength = 0;
+    // let chart = new CanvasJS.Chart("chartContainer", {
+    //   exportEnabled: true,
+    //   title: {
+    //     text: "Live Chart with Data-Points from External JSON"
+    //   },
+    //   data: [{
+    //     type: "spline",
+    //     dataPoints: this.items,
+    //   }]
+    // });
+    // this.graphService.getCurrencyPairs().subscribe((data) => {
+    //   this.items = data;
+  }
     // $.getJSON("https://canvasjs.com/services/data/datapoints.php?xstart=1&ystart=25&length=20&type=json&callback=?", function (data) {
     //   $.each(data, function (key, value) {
     //     dataPoints.push({ x: value[0], y: parseInt(value[1]) });
@@ -67,7 +74,7 @@ export class GraphComponent implements OnInit {
     //     setTimeout(function () { updateChart() }, 1000);
     //   });
     // }
-  }
+  
   // ngOnInit() {
   //   this.graphService.getCurrencyPairs().subscribe((data) => {
   //     this.items = data;

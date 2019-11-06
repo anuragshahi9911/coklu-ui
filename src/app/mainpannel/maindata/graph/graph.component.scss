@@ -1,4 +1,29 @@
-.cardHolder {
+.card {
+    margin: 7px;
+    width: fit-content;
+    height: fit-content;
     display: flex;
-    justify-content: space-evenly;
+    padding: 0px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: center;
+    min-height: 364px;
+    max-height: 400px;
+    overflow: hidden;
+}
+.cards_collection {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 0px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: center;
+}
+.graph_content {
+    width: 100%;
+    height: 100%;
+}
+.bg-secondary {
+    background-color: #cbdcea!important;
 }

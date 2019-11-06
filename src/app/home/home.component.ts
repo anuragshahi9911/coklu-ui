@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { User } from '../shared/models/user.model';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../shared/services/authentication.service';
-import { UserService } from '../shared/security/user.service';
 import { first } from 'rxjs/operators';
 import { MenuModel } from '../shared/models/menu.model';
 import { UserProfileItem } from '../shared/components/header-search/header-user-profile';
 import { HomeService } from './home.service';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -37,17 +37,17 @@ export class HomeComponent implements OnInit {
     });
     this.width = window.innerWidth;
     this.hideMenu();
-    let item1 = new MenuModel('Dashboard', 'nl', '', '', '/')
-    let item2 = new MenuModel('Chat', '/home/dashboard/chat', '', '', 'null')
-    let item3 = new MenuModel('Graph', '/home/dashboard/graph', '', '', 'null')
-    let item4 = new MenuModel('Other', 'nl', '', '', '/')
+    let item1 = new MenuModel('Dashboard', '/home', '', '', '/')
+    let item2 = new MenuModel('Chat', '/home/chat', '', '', 'null')
+    let item3 = new MenuModel('Graph', '/home/graph', '', '', 'null')
+    let item4 = new MenuModel('Table', '/home/table', '', '', 'null')
     this.menuItems = [item1,item2,item3, item4];
     let user = new UserProfileItem('Anurag Shahi', '', '')
     this.userProfileItems = [user];
   }
 
   ngOnInit() {
-    this.loadAllUsers();
+    // this.loadAllUsers();
   }
 
   ngOnDestroy() {
@@ -66,20 +66,12 @@ export class HomeComponent implements OnInit {
       this.homeService.isMenuIcon = false;
     }
   }
-  private deleteUser(id: number) {
-    this.userService.delete(id).pipe(first()).subscribe(() => {
-      this.loadAllUsers()
-    });
-  }
+ 
   public logout() {
     this.authenticationService.logout();
     this.router.navigate(['/']);
   }
-  private loadAllUsers() {
-    this.userService.getAll().pipe(first()).subscribe(users => {
-      this.users = users;
-    });
-  }
+ 
   /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
   public toogleNav() {
     this.sidebarFlag = this.sidebarFlag ? false : true;

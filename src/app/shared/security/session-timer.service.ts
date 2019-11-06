@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { TokenService } from './token.service';
-import { UserService } from './user.service';
 import { ConfirmDialogService } from '../components/confirm-dialog/confirm-dialog.service';
 import { LoggerService } from '../services/logger.service';
 import { Subscription } from 'rxjs';
+import { UserService } from '../services/user.service';
 
 @Injectable({
     providedIn: 'root'

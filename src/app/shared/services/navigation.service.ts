@@ -6,8 +6,8 @@ import { ConfirmDialogService } from '../components/confirm-dialog/confirm-dialo
 import { AlertService } from '../components/alerts/alert.service';
 import { map, filter } from 'rxjs/operators';
 import { BreadCrumbItem } from '../models/breadcrumb-item';
-import { UserService } from '../security/user.service';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { UserService } from './user.service';
 // Service for displaying Breadcrumbs, Main Menu, Menu ID based Traversal
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class NavigationService {
   // private currentMenuId: string;
 
   constructor(private router: Router, private http: HttpClient,
-    private userService: UserService, private confirmDialogService: ConfirmDialogService,
+    private confirmDialogService: ConfirmDialogService,
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
     private alertService: AlertService) {
@@ -40,24 +40,7 @@ export class NavigationService {
       );
   }
 
-  public initAppDataAndReload(url: string) {
-    this.isAppInitialized = false;
-    this.userService.loadUserDetails().subscribe(userInfo => {
-      this.isAppInitialized = true;
-        if (url === '' || url === '/home' || url === '/home/dashboard') {
-          if (this.userService.canAccessRoute('dashboard')) {
-            this.navigateByUrl('/home/dashboard');
-          } else if (this.userService.canAccessRoute('stores')) {
-            this.navigateByUrl('/home/stores');
-          } else if (this.userService.canAccessRoute('orders')) {
-            this.navigateByUrl('/home/orders');
-          }
-        } else {
-          this.navigateByUrl(url);
-        }
-    });
-  }
-
+ 
   public getRouteAsAString(route: ActivatedRouteSnapshot) {
     if (route.url) {
       let url = '';
