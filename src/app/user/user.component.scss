@@ -56,6 +56,9 @@ a {
     transform: translate(-50%, -50%);
     background-image: url("../../assets/login.jpg")
 }
+.form-control {
+    height: 48px;
+}
 
 .form-container form {
     background: #fff;
@@ -66,6 +69,7 @@ a {
     justify-content: center;
     align-items: center;
     text-align: center;
+    
 }
 
 .social-container {
@@ -82,7 +86,9 @@ a {
     height: 40px;
     width: 40px;
 }
-
+label {
+    font-weight: 400;
+}
 .form-container input {
     background: #eee;
     border: none;
@@ -237,11 +243,79 @@ button.ghost {
 	letter-spacing: 15px;
 	align-items: center;
 }
+.red-border-class {
+    border: 1px solid rgb(219, 61, 82) !important
+}
 
 
 
-
-
+  
+  .errorShake {
+    -webkit-animation: kf_shake 0.4s 1 linear;
+    -moz-animation: kf_shake 0.4s 1 linear;
+    -o-animation: kf_shake 0.4s 1 linear;
+  }
+  @-webkit-keyframes kf_shake {
+    0% {
+      -webkit-transform: translate(30px);
+    }
+    20% {
+      -webkit-transform: translate(-30px);
+    }
+    40% {
+      -webkit-transform: translate(15px);
+    }
+    60% {
+      -webkit-transform: translate(-15px);
+    }
+    80% {
+      -webkit-transform: translate(8px);
+    }
+    100% {
+      -webkit-transform: translate(0px);
+    }
+  }
+  @-moz-keyframes kf_shake {
+    0% {
+      -moz-transform: translate(30px);
+    }
+    20% {
+      -moz-transform: translate(-30px);
+    }
+    40% {
+      -moz-transform: translate(15px);
+    }
+    60% {
+      -moz-transform: translate(-15px);
+    }
+    80% {
+      -moz-transform: translate(8px);
+    }
+    100% {
+      -moz-transform: translate(0px);
+    }
+  }
+  @-o-keyframes kf_shake {
+    0% {
+      -o-transform: translate(30px);
+    }
+    20% {
+      -o-transform: translate(-30px);
+    }
+    40% {
+      -o-transform: translate(15px);
+    }
+    60% {
+      -o-transform: translate(-15px);
+    }
+    80% {
+      -o-transform: translate(8px);
+    }
+    100% {
+      -o-origin-transform: translate(0px);
+    }
+  }
+  
 
 
 

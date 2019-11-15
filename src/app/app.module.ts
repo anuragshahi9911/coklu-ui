@@ -13,7 +13,7 @@ import { AlwaysAuthChildrenGuard } from './shared/guards/always-auth-children.gu
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {
     MatButtonModule, MatCheckboxModule,
-    MatFormFieldModule, MatInputModule, MatButtonToggleModule, MatIconModule
+    MatFormFieldModule, MatInputModule, MatButtonToggleModule, MatIconModule,  MatSnackBarModule
 } from '@angular/material';
 import { ParticlesModule } from 'angular-particle';
 import { HeaderSearchComponent } from './shared/components/header-search/header-search.component';;
@@ -23,6 +23,7 @@ import { TooltipComponent } from './shared/components/tooltip/tooltip.component'
 import { UserComponent } from './user/user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component'
 import { AuthInterceptor } from './shared/guards/auth.interceptor';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @NgModule({
     imports: [
@@ -43,9 +44,10 @@ import { AuthInterceptor } from './shared/guards/auth.interceptor';
         AppComponent,       
         HomeComponent,
         HeaderSearchComponent,
-        TooltipComponent,
         UserComponent,
         UserProfileComponent,
+        TooltipComponent
+        
        ],
     providers: [
         SharedModule,
@@ -61,14 +63,12 @@ import { AuthInterceptor } from './shared/guards/auth.interceptor';
         TooltipComponent
     ],
     exports: [CommonModule,
-        HomeComponent,
-        MatFormFieldModule,
-        MatButtonModule,
-        MatButtonToggleModule,
-        MatIconModule,
-        MatInputModule,
-        MatCheckboxModule    
+        HomeComponent
+       
+          
     ]
 })
 
 export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
