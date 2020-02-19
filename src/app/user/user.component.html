@@ -8,12 +8,7 @@
             [ngClass]="{ 'errorShake': signUpForm.submitted && signUpForm.invalid }"
              novalidate>
             <h1>Create Account</h1>
-            <div class="social-container">
-              <a href="#" tooltip="Login using Facebook" class="social"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" tooltip="Login using Google" class="social"><i class="fab fa-google-plus-g"></i></a>
-              <a href="#" tooltip="Login using Linkedin" class="social"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            <span>or use your email for registration</span>
+            <span>Use your Email for Registration</span>
             <input type="text" [ngClass]="{'red-border-class errorShake': signUpForm.submitted && fullName.errors}" placeholder="Full Name" name="fullName"  [(ngModel)]="selectedUser.fullName"
               #fullName="ngModel"   required>
             <div *ngIf="signUpForm.submitted && fullName.invalid" class="invalid-feedback">
@@ -44,8 +39,9 @@
             <div class="social-container">
               <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
               <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-              <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+              <a  (click)="openDialogforSMS()" class="social"><i class="fab fas fa-phone"></i></a>
             </div>
+            
             <span>or use your account</span>
             <input type="text" name="email" #emailSignIn="ngModel" [(ngModel)]="model.email" placeholder="Email" [pattern]="emailRegex"
               required [ngClass]="{'invalid-textbox' :signInForm.submitted && !emailSignIn.valid }">
@@ -57,7 +53,7 @@
             <div *ngIf="signInForm.submitted && passwordSignIn.invalid">
               <label class="validation-message">Minimum 4 characters.</label>
             </div>
-            <a href="#">Forgot your password ?</a>
+            <a [routerLink]="['/recover']">Forgot your password ?</a>
             <button type="submit" (click)="signInErrorShakeCheck()">Sign In</button>
           </form>
         </div>

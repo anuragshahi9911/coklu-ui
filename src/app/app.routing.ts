@@ -6,7 +6,8 @@ import { RootAuthGuard } from './shared/guards/root-auth.guard';
 import { AlwaysAuthChildrenGuard } from './shared/guards/always-auth-children.guard';
 import { UserComponent } from './user/user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { PhoneLoginComponent } from './shared/components/phone-login/phone-login.component';
+import { RecoveryComponent } from './user/recovery/recovery.component';
+import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
 const appRoutes: Routes = [
   { path: '', 
     redirectTo: '/home',
@@ -16,11 +17,14 @@ const appRoutes: Routes = [
   {
     path: 'signup', component: UserComponent  
   },
+  {
+    path: 'recover', component: RecoveryComponent
+  },
   { 
     path: 'login', component: UserComponent
   },
   {
-    path: 'userprofile', component: PhoneLoginComponent
+    path: 'userprofile', component: UserProfileComponent
   },
   { 
     path: 'logout', component: UserComponent
@@ -37,7 +41,7 @@ const appRoutes: Routes = [
       }
     ]
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

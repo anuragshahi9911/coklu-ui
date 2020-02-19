@@ -1,5 +1,5 @@
 
-    <p-table #dt [columns]="cols" [value]="users" [paginator]="true" [rows]="10">
+    <p-table #dt [columns]="cols" [value]="tableData" [paginator]="true" [rows]="10">
         <ng-template pTemplate="caption">
             <div style="text-align: right">        
                 <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
@@ -25,8 +25,8 @@
         <ng-template pTemplate="body" let-rowData let-columns="columns">
             <tr [pSelectableRow]="rowData">
                 <td *ngFor="let col of columns" >
-                        <span contenteditable="true" (keyup)="changeValue(rowData[col.field], col.field, $event)" (blur)="updateList(rowData[col.field], rowData,  col.field, $event)" *ngIf="col.field ==='name' && rowData['editable'] === false"><a style="color:blue;" routerLink="/detail/{{rowData[col.field]}}">{{rowData[col.field]}}</a></span>
-                        <input type="date" *ngIf="col.field !=='action' && col.field ==='dob' && rowData['editable'] === true" [(ngModel)] = "rowData[col.field]" (keyup)="changeValue(rowData[col.field], col.field, $event)" (blur)="updateList(rowData[col.field], rowData,  col.field, $event)" >
+                        <span contenteditable="true" (keyup)="changeValue(rowData[col.field], col.field, $event)" (blur)="updateList(rowData[col.field], rowData,  col.field, $event)">{{rowData[col.field]}}</span>
+                        <!-- <input type="date" *ngIf="col.field !=='action' && col.field ==='dob' && rowData['editable'] === true" [(ngModel)] = "rowData[col.field]" (keyup)="changeValue(rowData[col.field], col.field, $event)" (blur)="updateList(rowData[col.field], rowData,  col.field, $event)" >
                         <input *ngIf="col.field !=='action' && col.field !=='dob' && col.field !=='active' && col.field !=='age' && rowData['editable'] === true" type="text" [(ngModel)] = "rowData[col.field]" (keyup)="changeValue(rowData[col.field], col.field, $event)" (blur)="updateList(rowData[col.field], rowData,  col.field, $event)" >
                         <select id = "myList" *ngIf="col.field !=='action' &&  col.field ==='active' && rowData['editable'] === true"  [(ngModel)] = "rowData[col.field]" (keyup)="changeValue(rowData[col.field], col.field, $event)" (blur)="updateList(rowData[col.field], rowData,  col.field, $event)">
                                 <option [ngValue] = true>Active</option>
@@ -41,7 +41,7 @@
                         </span>
                         <span contenteditable="true" (keyup)="changeValue(rowData[col.field], col.field, $event)" (blur)="updateList(rowData[col.field], rowData,  col.field, $event)" *ngIf="col.field ==='active' && rowData[col.field] === false && rowData['editable'] === false" [ngClass]="{'error': (rowData[col.field] == false) , 'sucess': (rowData[col.field] == true)}">Inactive </span>
                         <span contenteditable="true" (keyup)="changeValue(rowData[col.field], col.field, $event)" (blur)="updateList(rowData[col.field], rowData,  col.field, $event)" *ngIf="col.field ==='active' && rowData[col.field] === true && rowData['editable'] === false" [ngClass]="{'error': (rowData[col.field] == false) , 'sucess': (rowData[col.field] == true)}"> Active</span>
-                        <span contenteditable="true" (keyup)="changeValue(rowData[col.field], col.field, $event)" (blur)="updateList(rowData[col.field], rowData,  col.field, $event)" *ngIf="col.field !=='name' && col.field !=='dob' && col.field !=='active' && rowData['editable'] === false" class="td"> {{rowData[col.field]}}</span>
+                        <span contenteditable="true" (keyup)="changeValue(rowData[col.field], col.field, $event)" (blur)="updateList(rowData[col.field], rowData,  col.field, $event)" *ngIf="col.field !=='name' && col.field !=='dob' && col.field !=='active' && rowData['editable'] === false" class="td"> {{rowData[col.field]}}</span> -->
                 </td>
             </tr>
         </ng-template>

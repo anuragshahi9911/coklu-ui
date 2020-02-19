@@ -17,13 +17,13 @@ import {
   MatInputModule,
   MatCheckboxModule,
   MatSnackBarModule,
-  MatDialogModule
+  MatDialogModule,
+  MatStepperModule
 } from "@angular/material";
 import { TooltipDirective } from "./components/tooltip/tooltip.directive";
 import { BarchartComponent } from './components/charts/barchart/barchart.component';
 import { PiechartComponent } from './components/charts/piechart/piechart.component';
 import { fakeBackendProvider } from "./services/fake-backend";
-import { PhoneLoginComponent } from './components/phone-login/phone-login.component';
 import { MustMatchDirective } from './components/directive/must-match.directive';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { DialogComponent } from './components/dialog/dialog.component';
@@ -41,7 +41,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatIconModule,
     MatInputModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatStepperModule
   ],
   declarations: [
     AlertsComponent,
@@ -53,7 +54,6 @@ import { DialogComponent } from './components/dialog/dialog.component';
     TooltipDirective,
     BarchartComponent,
     PiechartComponent,
-    PhoneLoginComponent,
     MustMatchDirective,
     SnackbarComponent,
     DialogComponent
@@ -85,7 +85,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
   ],
   entryComponents: [
     TooltipComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    DialogComponent
   ]
 })
 export class SharedModule {

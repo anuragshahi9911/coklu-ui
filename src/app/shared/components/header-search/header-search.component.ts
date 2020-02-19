@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SearchEmitterModel } from './searchEmitter-model';
 import { HomeService } from 'src/app/home/home.service';
 import { UserService } from '../../services/user.service';
+import { UserProfileItem } from './header-user-profile';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -30,11 +31,12 @@ export class HeaderSearchComponent implements OnInit {
     this.searchText = '';
   }
   public appItems: Array<any>;
-  @Input() public userProfileItems;
+  @Input() public userProfileItems: UserProfileItem;
   public controlPanelApp: any;
   public accountApp: any;
 
   ngOnInit() {
+  
   }
 
   private keyUpSearch(event: any) {

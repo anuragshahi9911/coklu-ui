@@ -1,11 +1,31 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.animal">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
-</div>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form  #firstFormGroup="ngForm" >
+        <ng-template matStepLabel>Enter your Mobile Number</ng-template>
+        <mat-form-field>
+          <input matInput  name="mobileNumber" placeholder="Enter mobile number" [(ngModel)]="phoneNumber"  #fullName="ngModel"   required>       
+        </mat-form-field>
+        <div id="recaptchacontainer" #recaptchacontainer></div>
+        <div>
+          <button mat-button  (click)="sendLoginCode('1')" cdkFocusInitial matStepperNext>submit</button>
+          <button mat-button  (click)="onNoClick()">Close</button>
+        </div>
+      </form>
+      <div id="recaptcha-container"></div>
+    </mat-step>
+    <mat-step  [stepControl]="secondFormGroup">
+      <ng-template matStepLabel>Enter OTP</ng-template>
+      <form   #secondFormGroup="ngForm" >     
+          <small>We have sent OTP to your Mobile {{phoneNumber}}  </small>  <a style="color: red" (click)="sendLoginCode('2')"> Not Received? click to Resend</a> <br>
+          <mat-form-field>           
+              <input matInput placeholder="Enter OTP" maxlength="10" name="mobileNumber" [(ngModel)]="verificationCode"  #verification="ngModel" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious >Change Mobile Number</button>
+                <button mat-button (click)="verifyLoginCode()" >Verify</button>
+              </div>
+        </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+  
+  

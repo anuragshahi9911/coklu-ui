@@ -7,6 +7,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../shared/components/snackbar/snackbar.component';
 import { SnackbarService } from '../shared/components/snackbar/snackbar.service';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../shared/components/dialog/dialog.component';
+import { AuthenticationService } from '../shared/services/authentication.service';
+
 
 @Component({
   selector: 'app-user',
@@ -14,7 +18,6 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
   styleUrls: ['./user.component.scss'],
   })
 export class UserComponent implements OnInit {
-
   @ViewChild('container') container:ElementRef;
   @ViewChild('signIn') signIn: ElementRef
   @ViewChild('signUpForm') public signUpForm: NgForm;
@@ -25,7 +28,10 @@ export class UserComponent implements OnInit {
               private router: Router,
               private alert: AlertService,
               private _snackBar: MatSnackBar,
-              private snackBarService: SnackbarService) { }
+              private snackBarService: SnackbarService,
+              public dialog: MatDialog,
+              private authService: AuthenticationService
+             ) { }
 
   ngOnInit() {
    
@@ -40,13 +46,16 @@ export class UserComponent implements OnInit {
     email: '',
     password: ''
   };
+  mobileNumber: string; 
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   serverErrorMessages: string;
   showSucessMessage: boolean;
+  loginStatus: Boolean;
   onSignIn(form : NgForm){
     this.userService.login(form.value).subscribe(
-      res => {
+      (res: any) => {
         this.userService.setToken(res['token']);
+        localStorage.setItem('currentUser', JSON.stringify(res.user));
         this.router.navigateByUrl('/home');
       },
       err => {
@@ -112,6 +121,22 @@ export class UserComponent implements OnInit {
   openSnackBar(duration: number) {
     this._snackBar.openFromComponent(SnackbarComponent, {
       duration: duration * 1000,
+    });
+  }
+  openDialogforSMS(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: { phoneNumber: '', loginStatus: '', message: ''}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result, this.loginStatus); 
+      if (result.loginStatus === false) {
+        this.snackBarService.saveMessage("Authentication Failed");
+        this.openSnackBar(5);
+      } else {
+        this.router.navigateByUrl('/home');
+      } 
+     
     });
   }
   resetForm(form: NgForm) {

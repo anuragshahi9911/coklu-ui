@@ -19,11 +19,12 @@ import { ParticlesModule } from 'angular-particle';
 import { HeaderSearchComponent } from './shared/components/header-search/header-search.component';;
 import { OverlayModule } from '@angular/cdk/overlay';
 import { SharedModule } from './shared/shared.module';
-import { TooltipComponent } from './shared/components/tooltip/tooltip.component';
 import { UserComponent } from './user/user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component'
 import { AuthInterceptor } from './shared/guards/auth.interceptor';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';;
+import { RecoveryComponent } from './user/recovery/recovery.component';
+import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
 
 @NgModule({
     imports: [
@@ -46,7 +47,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
         HeaderSearchComponent,
         UserComponent,
         UserProfileComponent,
-        TooltipComponent
+        RecoveryComponent,
+        PageNotFoundComponent
+        
         
        ],
     providers: [
@@ -60,7 +63,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
         ],
     bootstrap: [AppComponent],
     entryComponents: [
-        TooltipComponent
+        
     ],
     exports: [CommonModule,
         HomeComponent

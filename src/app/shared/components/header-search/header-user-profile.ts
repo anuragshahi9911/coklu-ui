@@ -1,5 +1,5 @@
 export class UserProfileItem {
-    private name: string;
+    public name: string;
     private url: string;
     private logo: string;
 
