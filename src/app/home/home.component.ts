@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   public sidebarFlag = false;
   public width: Number;
   public menuItems: Array<MenuModel>;
-  public userProfileItems: Array<UserProfileItem>;
+  public userProfileItems: UserProfileItem;
   @ViewChild('sidebar') sidebar: ElementRef;
   constructor(
     private authenticationService: AuthenticationService,
@@ -29,12 +29,11 @@ export class HomeComponent implements OnInit {
     private router: Router,
     public homeService: HomeService
   ) {
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['home/dashboard']);
+    if (localStorage.getItem('currentUser')) {    
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+        this.userProfileItems = new UserProfileItem(currentUser.fullName,'','');
     }
-    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
-      this.currentUser = user;
-    });
+    
     this.width = window.innerWidth;
     this.hideMenu();
     let item1 = new MenuModel('Dashboard', '/home', '', '', '/')
@@ -42,8 +41,7 @@ export class HomeComponent implements OnInit {
     let item3 = new MenuModel('Graph', '/home/graph', '', '', 'null')
     let item4 = new MenuModel('Table', '/home/table', '', '', 'null')
     this.menuItems = [item1,item2,item3, item4];
-    let user = new UserProfileItem('Anurag Shahi', '', '')
-    this.userProfileItems = [user];
+    
   }
 
   ngOnInit() {
@@ -52,7 +50,6 @@ export class HomeComponent implements OnInit {
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
-    this.currentUserSubscription.unsubscribe();
   }
   onResize(event) {
     this.width = event.target.innerWidth;
@@ -65,11 +62,6 @@ export class HomeComponent implements OnInit {
       this.homeService.isMenu = true;
       this.homeService.isMenuIcon = false;
     }
-  }
- 
-  public logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/']);
   }
  
   /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */

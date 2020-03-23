@@ -5,9 +5,9 @@ import { HomeComponent } from './home/home.component';
 import { RootAuthGuard } from './shared/guards/root-auth.guard';
 import { AlwaysAuthChildrenGuard } from './shared/guards/always-auth-children.guard';
 import { UserComponent } from './user/user.component';
-import { SignInComponent } from './user/sign-in/sign-in.component';
-import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { RecoveryComponent } from './user/recovery/recovery.component';
+import { PageNotFoundComponent } from './home/page-not-found/page-not-found.component';
 const appRoutes: Routes = [
   { path: '', 
     redirectTo: '/home',
@@ -15,12 +15,13 @@ const appRoutes: Routes = [
     canActivate:[RootAuthGuard]
  },
   {
-    path: 'signup', component: UserComponent,
-    children: [{ path: '', component: SignUpComponent }]
+    path: 'signup', component: UserComponent  
+  },
+  {
+    path: 'recover', component: RecoveryComponent
   },
   { 
-    path: 'login', component: UserComponent,
-    children: [{ path: '', component: SignInComponent }] 
+    path: 'login', component: UserComponent
   },
   {
     path: 'userprofile', component: UserProfileComponent
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
       }
     ]
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

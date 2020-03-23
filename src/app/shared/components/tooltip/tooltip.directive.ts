@@ -31,15 +31,13 @@ export class TooltipDirective implements OnInit {
 
   @HostListener('mouseenter')
   show() {
-    console.log("in");
-    const tooltipRef: ComponentRef<TooltipComponent>
+      const tooltipRef: ComponentRef<TooltipComponent>
       = this.overlayRef.attach(new ComponentPortal(TooltipComponent));
     tooltipRef.instance.text = this.text;
   }
 
   @HostListener('mouseout')
   hide() {
-    console.log("out");
-    this.overlayRef.detach();
+     this.overlayRef.detach();
   }
 }

@@ -5,12 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    selectedUser: User = {
-        fullName: '',
-        email: '',
-        password: ''
-      };
-    
+  
+      phoneLogin: Boolean;
       noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
     
       constructor(private http: HttpClient) { }
@@ -42,6 +38,7 @@ export class UserService {
     
       deleteToken() {
         localStorage.removeItem('token');
+        localStorage.removeItem('currentUser');
       }
     
       getUserPayload() {
@@ -55,10 +52,15 @@ export class UserService {
       }
     
       isLoggedIn() {
-        var userPayload = this.getUserPayload();
-        if (userPayload)
-          return userPayload.exp > Date.now() / 1000;
-        else
-          return false;
+        if (!this.phoneLogin || this.getToken()) {
+          var userPayload = this.getUserPayload();
+          if (userPayload)
+            return userPayload.exp > Date.now() / 1000;
+          else
+            return false;
+        } else {
+          return false
+        }
+       
       }
 }

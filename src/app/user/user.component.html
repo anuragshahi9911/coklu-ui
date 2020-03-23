@@ -1,7 +1,90 @@
-<div class="wrapper">
-  <div id="formContent">
-    <h2 class="underlineHover"  routerLink="/login"  routerLinkActive="active"> Sign In </h2>
-    <h2 class="underlineHover"  routerLink="/signup"  routerLinkActive="active">Sign Up </h2>
-    <router-outlet></router-outlet>
-  </div>
+<div class="allform">
+<div class="formPart">
+    <div class="container" #container>
+        <div #signupcontainer class="form-container sign-up-container">
+          <form name="form"  #errorShake
+           (ngSubmit)="signUpForm.form.valid && onSignup(signUpForm)"
+            #signUpForm="ngForm"
+            [ngClass]="{ 'errorShake': signUpForm.submitted && signUpForm.invalid }"
+             novalidate>
+            <h1>Create Account</h1>
+            <span>Use your Email for Registration</span>
+            <input type="text" [ngClass]="{'red-border-class errorShake': signUpForm.submitted && fullName.errors}" placeholder="Full Name" name="fullName"  [(ngModel)]="selectedUser.fullName"
+              #fullName="ngModel"   required>
+            <div *ngIf="signUpForm.submitted && fullName.invalid" class="invalid-feedback">
+              <div *ngIf="fullName.errors.required">Full Name is required</div>
+            </div>
+            <input type="text"  [ngClass]="{'red-border-class errorShake': signUpForm.submitted && email.errors}" placeholder="Email" name="email" [(ngModel)]="selectedUser.email" #email="ngModel"
+               required  email>
+            <div *ngIf="signUpForm.submitted && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">Email must be a valid email address</div>
+            </div>
+            <input type="password" [ngClass]="{'red-border-class errorShake': signUpForm.submitted && password.errors}"  placeholder="Password" name="password"  [(ngModel)]="selectedUser.password"
+              #password="ngModel" required minlength="6">
+            <div *ngIf="signUpForm.submitted && password.invalid" class="invalid-feedback">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+            <div class="form-row">
+              <div class="text-center">
+                <button type="submit" (click)="signUpErrorShakeCheck()" >Sign Up</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div #signincontainer class="form-container sign-in-container">
+          <form #signInForm="ngForm" #signIn [ngClass]="{ 'errorShake' :signInForm.submitted && !signInForm.valid  }" (ngSubmit)="signInForm.valid && onSignIn(signInForm)">
+            <h1>Sign in</h1>
+            <div class="social-container">
+              <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+              <a  (click)="openDialogforSMS()" class="social"><i class="fab fas fa-phone"></i></a>
+            </div>
+            
+            <span>or use your account</span>
+            <input type="text" name="email" #emailSignIn="ngModel" [(ngModel)]="model.email" placeholder="Email" [pattern]="emailRegex"
+              required [ngClass]="{'invalid-textbox' :signInForm.submitted && !emailSignIn.valid }">
+            <div *ngIf="signInForm.submitted && emailSignIn.invalid">
+              <label class="validation-message">Invalid email address.</label>
+            </div>
+            <input type="password" autocomplete="current-password" name="password" #passwordSignIn="ngModel" [(ngModel)]="model.password"
+              placeholder="Password" required minlength="4" [ngClass]="{'invalid-textbox' :signInForm.submitted && !passwordSignIn.valid }">
+            <div *ngIf="signInForm.submitted && passwordSignIn.invalid">
+              <label class="validation-message">Minimum 4 characters.</label>
+            </div>
+            <a [routerLink]="['/recover']">Forgot your password ?</a>
+            <button type="submit" (click)="signInErrorShakeCheck()">Sign In</button>
+          </form>
+        </div>
+        <div #overlaycontainer class="overlay-container">
+          <div #overlay class="overlay">
+            <div #overlayleft class="overlay-panel overlay-left">
+              <h1>Welcome Back!</h1>
+              <p>To keep connected with us please login with your personal info</p>
+              <button (click)="signin()" class="ghost" #signIn>Sign In</button>
+            </div>
+            <div #overlayright class="overlay-panel overlay-right">
+              <h1>Hello, Friend!</h1>
+              <p>Enter your personal details and start journey with Coklu</p>
+              <button class="ghost" (click)="signup()" #signUp>Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<!-- <div style="margin-top:5px" class="footerPart">
+    <div class="footer">
+        <div #test>
+          <b class="text"> Follow me on </b>
+            <br>
+            <div class="icons">
+              <a href="https://github.com/kvaibhav01" target="_blank" class="social"><i class="fab fa-github"></i></a>
+              <a href="https://www.instagram.com/vaibhavkhulbe143/" target="_blank" class="social"><i class="fab fa-instagram"></i></a>
+              <a href="https://medium.com/@vaibhavkhulbe" target="_blank" class="social"><i class="fab fa-medium"></i></a>
+              <a href="https://twitter.com/vaibhav_khulbe" target="_blank" class="social"><i class="fab fa-twitter-square"></i></a>
+              <a href="https://linkedin.com/in/vaibhav-khulbe/" target="_blank" class="social"><i class="fab fa-linkedin"></i></a></div> 
+            </div>
+      </div>
+</div> -->
 </div>
